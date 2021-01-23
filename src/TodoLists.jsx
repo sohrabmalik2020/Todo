@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const TodoLists = (props) => {
+  const [line, setLine] = useState(false);
+  const cutIt = () => {
+    setLine(true);
+  };
   return (
     <>
       <div className="main">
-        <h3>{props.abc}</h3>
-        <button
+        <div className=".center_div">
+          <span onClick={cutIt}>
+            <DeleteIcon />
+          </span>
+          <h3 style={{ textDecoration: line ? "line-through" : "none" }}>
+            {props.abc}
+          </h3>
+        </div>
+
+        {/* <button
           onClick={() => {
             props.onSelect(props.id);
           }}
         >
           delete
-        </button>
+        </button> */}
       </div>
     </>
   );

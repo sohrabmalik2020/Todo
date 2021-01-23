@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import TodoLists from "./TodoLists";
 
+//<---material ui---->
+import Button from "@material-ui/core/Button";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import AddIcon from "@material-ui/icons/Add";
+
 const Todo = () => {
   const [input, setInput] = useState("");
   const [inputStr, setinputStr] = useState([]);
@@ -26,29 +31,34 @@ const Todo = () => {
 
   return (
     <>
-      <div className="App">
-        <h1>Todo ListS</h1>
-        <div>
-          <input
-            value={input}
-            type="text"
-            className="input"
-            onChange={inputEvent}
-          />
-          <button onClick={addList}>add</button>
+      <div className="main_div">
+        <div className="center_div">
+          <br />
+          <h1>ToDo List</h1>
+          <div>
+            <input
+              value={input}
+              type="text"
+              className="input"
+              onChange={inputEvent}
+            />
+            <Button onClick={addList}>
+              <AddIcon />
+            </Button>
+          </div>
+          <ol>
+            {inputStr.map((allItems, idx) => {
+              return (
+                <TodoLists
+                  abc={allItems}
+                  key={idx}
+                  id={idx}
+                  //onSelect={deleteItems}
+                />
+              );
+            })}
+          </ol>
         </div>
-        <ol>
-          {inputStr.map((allItems, idx) => {
-            return (
-              <TodoLists
-                abc={allItems}
-                key={idx}
-                id={idx}
-                onSelect={deleteItems}
-              />
-            );
-          })}
-        </ol>
       </div>
     </>
   );
