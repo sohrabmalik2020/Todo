@@ -8,8 +8,8 @@ const TodoLists = (props) => {
   };
   return (
     <>
-      <div className="main">
-        <div className=".center_div">
+      <div className="todo_style">
+        <div>
           <span onClick={cutIt}>
             <DeleteIcon />
           </span>
